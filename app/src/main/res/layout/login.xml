@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    tools:context=".LoginActivity">
+    <LinearLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_marginTop="80dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+
+            android:src="@drawable/background_login_register" />
+        <EditText
+            android:id="@+id/username_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:textSize="24sp"
+            android:inputType="text"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/baseline_person_white_18dp"
+            android:textColorHint="@color/primaryTextColor"
+            android:textColor="@color/primaryTextColor"
+            android:backgroundTint="@color/secondaryColor" />
+
+        <EditText
+            android:layout_marginTop="16dp"
+            android:id="@+id/password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textSize="24sp"
+            android:drawableStart="@drawable/baseline_lock_white_18dp"
+            android:drawablePadding="8dp"
+            android:inputType="textPassword"
+            android:textColorHint="@color/primaryTextColor"
+            android:textColor="@color/primaryTextColor"
+            android:backgroundTint="@color/secondaryColor"
+            />
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/primaryTextColor"
+            android:background="@color/secondaryColor"
+            android:elevation="2dp"
+            />
+        <TextView
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+
+            android:textAlignment="center"
+            android:textColor="@color/primaryTextColor"/>
+
+        <TextView
+            android:id="@+id/sign_up_text"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign up now !"
+            android:textAlignment="center"
+            android:textColor="@color/secondaryColor"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
