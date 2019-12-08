@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-
                 try {
                     String namecountry = spinner.getSelectedItem().toString();
 //                    Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
@@ -84,10 +83,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
 
     private void addControls() {

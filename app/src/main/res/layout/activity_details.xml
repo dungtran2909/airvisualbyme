@@ -78,7 +78,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <include layout="@layout/layout_mylocal"></include>
+                    <include layout="@layout/layout_citylocal"></include>
 
                 </LinearLayout>
 
@@ -88,7 +88,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <include layout="@layout/layout_citylocal"></include>
+                    <include layout="@layout/layout_mylocal"></include>
 
                 </LinearLayout>
             </FrameLayout>

@@ -7,13 +7,13 @@ public class CityInfo {
     private int tp;
     private float hu;
     private float ws;
-    private float ic;
+    private String ic;
     private int aqi;
 
     public CityInfo() {
     }
 
-    public CityInfo(String nameState, String nameCountry, String nameCity, int tp, float hu, float ws, float ic, int aqi) {
+    public CityInfo(String nameState, String nameCountry, String nameCity, int tp, float hu, float ws, String ic, int aqi) {
         this.nameState = nameState;
         this.nameCountry = nameCountry;
         this.nameCity = nameCity;
@@ -72,11 +72,11 @@ public class CityInfo {
         this.ws = ws;
     }
 
-    public float getIc() {
+    public String getIc() {
         return ic;
     }
 
-    public void setIc(float ic) {
+    public void setIc(String ic) {
         this.ic = ic;
     }
 

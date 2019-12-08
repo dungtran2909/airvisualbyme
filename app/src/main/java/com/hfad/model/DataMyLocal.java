@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class DataMyLocal implements Serializable {
+
     @SerializedName("status")
     private String status;
 

@@ -1,6 +1,8 @@
 package com.hfad.doanmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.Context;
@@ -19,8 +21,11 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hfad.adapter.CityAdapter;
 import com.hfad.constan.Const;
+import com.hfad.impl.ItemClickListener;
 import com.hfad.model.City;
+import com.hfad.model.CityInfo;
 import com.hfad.model.Current;
 import com.hfad.model.Data;
 import com.hfad.model.DataCity;
@@ -32,6 +37,7 @@ import com.hfad.model.State;
 import com.hfad.model.Weather;
 import com.hfad.network.ApiService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -56,6 +62,9 @@ public class DetailsActivity extends AppCompatActivity implements LocationListen
 
     String nameCountry;
 
+    ArrayList<CityInfo> cityInfos;
+    RecyclerView rcl_city;
+    CityAdapter cityAdapter;
 
 
     @Override
@@ -142,7 +151,12 @@ public class DetailsActivity extends AppCompatActivity implements LocationListen
                     Log.d("Success", response.toString());
                     DataMyLocal dataMyLocal = response.body();
                     MyLocal myLocal = dataMyLocal.getMyLocal();
+                    Current current = myLocal.getCurrent();
+                    Pollution pollution = current.getPollution();
+                    Weather weather = current.getWeather();
                     Toast.makeText(DetailsActivity.this, myLocal.getCity(), Toast.LENGTH_LONG).show();
+                    cityInfos.add(new CityInfo(myLocal.getState(), myLocal.getCountry(), myLocal.getCity(), weather.getTp(), weather.getHu(), weather.getWs(), weather.getIc(), pollution.getAqius()));
+                    cityAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -168,12 +182,12 @@ public class DetailsActivity extends AppCompatActivity implements LocationListen
         tabHost.setup();
 
         TabHost.TabSpec tab1 = tabHost.newTabSpec("t1");
-        tab1.setIndicator("My location");
+        tab1.setIndicator("City");
         tab1.setContent(R.id.tab1);
         tabHost.addTab(tab1);
 
         TabHost.TabSpec tab2 = tabHost.newTabSpec("t2");
-        tab2.setIndicator("City");
+        tab2.setIndicator("My location");
         tab2.setContent(R.id.tab2);
         tabHost.addTab(tab2);
 
@@ -186,6 +200,20 @@ public class DetailsActivity extends AppCompatActivity implements LocationListen
         txt_level_my = findViewById(R.id.txt_level_my);
         ln_info_my = findViewById(R.id.ln_info_my);
         img_dgree_my = findViewById(R.id.img_dgree_my);
+
+        ItemClickListener itemClickListener = new ItemClickListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        };
+
+        cityInfos = new ArrayList<>();
+        rcl_city = findViewById(R.id.rcl_city);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(DetailsActivity.this);
+        rcl_city.setLayoutManager(manager);
+        cityAdapter = new CityAdapter(DetailsActivity.this, cityInfos, itemClickListener);
+        rcl_city.setAdapter(cityAdapter);
     }
 
     @Override
